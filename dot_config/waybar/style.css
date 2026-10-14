@@ -1,0 +1,138 @@
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "CaskaydiaCove Nerd Font Mono", "Noto Sans CJK SC", sans-serif;
+  font-size: 13px;
+}
+
+window#waybar {
+  background: transparent;
+  color: #dce7df;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  background-color: rgba(15, 20, 17, 0.94);
+  border: 1px solid rgba(132, 199, 145, 0.28);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+tooltip {
+  background-color: #111713;
+  border: 1px solid #84c791;
+  border-radius: 10px;
+}
+
+tooltip label {
+  color: #dce7df;
+  padding: 6px;
+}
+
+#custom-launcher,
+#window,
+#clock,
+#tray,
+#network,
+#pulseaudio,
+#backlight,
+#power-profiles-daemon,
+#battery {
+  padding: 0 11px;
+}
+
+#network,
+#pulseaudio,
+#backlight,
+#power-profiles-daemon,
+#battery {
+  border-left: 1px solid rgba(132, 199, 145, 0.09);
+}
+
+#custom-launcher {
+  color: #84c791;
+  font-size: 18px;
+  padding-left: 14px;
+  padding-right: 12px;
+}
+
+#custom-launcher:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#power-profiles-daemon:hover,
+#battery:hover {
+  background-color: rgba(132, 199, 145, 0.14);
+  border-radius: 11px;
+}
+
+#workspaces {
+  padding: 0 3px;
+}
+
+#workspaces button {
+  min-width: 24px;
+  margin: 4px 2px;
+  padding: 0 7px;
+  background: transparent;
+  color: #849087;
+  border-radius: 10px;
+}
+
+#workspaces button:hover {
+  background-color: rgba(132, 199, 145, 0.14);
+  color: #c6d3c9;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  background-color: #84c791;
+  color: #0d130f;
+  font-weight: 700;
+}
+
+#workspaces button.urgent {
+  background-color: #e78284;
+  color: #15100f;
+}
+
+#window {
+  color: #aebbb1;
+  padding-left: 8px;
+  padding-right: 14px;
+}
+
+window#waybar.empty #window {
+  padding: 0;
+}
+
+#clock {
+  color: #84c791;
+  font-weight: 700;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+#tray {
+  padding-left: 12px;
+  padding-right: 8px;
+}
+
+#network.disconnected,
+#pulseaudio.muted,
+#battery.warning {
+  color: #e5c07b;
+}
+
+#battery.charging,
+#battery.plugged,
+#battery.full {
+  color: #84c791;
+}
+
+#battery.critical:not(.charging) {
+  color: #e78284;
+  font-weight: 700;
+}

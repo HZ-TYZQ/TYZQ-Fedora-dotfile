@@ -1,0 +1,108 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = false
+palette = "soft_pill"
+scan_timeout = 100
+
+format = """
+([](fg:duration_bg)[ 󰔛 $cmd_duration ](fg:duration_fg bg:duration_bg)[](fg:duration_bg) )\
+[~](fg:separator) \
+[](fg:directory_bg)[  $directory ](fg:directory_fg bg:directory_bg)[](fg:directory_bg)\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$rust\
+$golang\
+$java\
+$c\
+$cpp\
+$line_break\
+[● ](fg:prompt)\
+$character"""
+
+[palettes.soft_pill]
+duration_bg = "#D7DFD1"
+duration_fg = "#586156"
+directory_bg = "#B8DDF1"
+directory_fg = "#52666F"
+separator = "#E7E3C7"
+prompt = "#D9B5CF"
+error = "#E78284"
+git_bg = "#D8C7E8"
+git_fg = "#5D566A"
+git_status_bg = "#F0D1B5"
+git_status_fg = "#6B5A4C"
+environment_bg = "#C9E2D0"
+environment_fg = "#526259"
+
+[cmd_duration]
+min_time = 0
+show_milliseconds = false
+format = "$duration"
+
+[directory]
+format = "$path"
+home_symbol = ""
+truncation_length = 2
+truncate_to_repo = false
+read_only = " 󰌾"
+
+[character]
+success_symbol = "[▶](fg:prompt)"
+error_symbol = "[▶](fg:error)"
+vimcmd_symbol = "[◀](fg:directory_bg)"
+vimcmd_replace_one_symbol = "[◀](fg:directory_bg)"
+vimcmd_replace_symbol = "[◀](fg:directory_bg)"
+vimcmd_visual_symbol = "[◀](fg:directory_bg)"
+
+[git_branch]
+disabled = false
+symbol = " "
+truncation_length = 24
+format = " [](fg:git_bg)[ $symbol$branch ](fg:git_fg bg:git_bg)[](fg:git_bg)"
+
+[git_status]
+disabled = false
+format = " [](fg:git_status_bg)[ $all_status$ahead_behind ](fg:git_status_fg bg:git_status_bg)[](fg:git_status_bg)"
+conflicted = "=${count}"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count}"
+stashed = "\u0024${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+
+[package]
+disabled = true
+
+[nodejs]
+disabled = false
+format = " [](fg:environment_bg)[ $symbol$version ](fg:environment_fg bg:environment_bg)[](fg:environment_bg)"
+
+[python]
+disabled = false
+format = ' [](fg:environment_bg)[ $symbol$version( \($virtualenv\)) ](fg:environment_fg bg:environment_bg)[](fg:environment_bg)'
+
+[rust]
+disabled = false
+format = " [](fg:environment_bg)[ $symbol$version ](fg:environment_fg bg:environment_bg)[](fg:environment_bg)"
+
+[golang]
+disabled = false
+format = " [](fg:environment_bg)[ $symbol$version ](fg:environment_fg bg:environment_bg)[](fg:environment_bg)"
+
+[java]
+disabled = false
+format = " [](fg:environment_bg)[ $symbol$version ](fg:environment_fg bg:environment_bg)[](fg:environment_bg)"
+
+[c]
+disabled = false
+format = " [](fg:environment_bg)[ $symbol$version ](fg:environment_fg bg:environment_bg)[](fg:environment_bg)"
+
+[cpp]
+disabled = false
+format = " [](fg:environment_bg)[ $symbol$version ](fg:environment_fg bg:environment_bg)[](fg:environment_bg)"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Xwayland Video Bridge
+GenericName=Share screens and windows to XWayland applications
+Icon=xwaylandvideobridge
+TryExec=xwaylandvideobridge
+Exec=xwaylandvideobridge
+OnlyShowIn=KDE;
+NoDisplay=true
+StartupNotify=false

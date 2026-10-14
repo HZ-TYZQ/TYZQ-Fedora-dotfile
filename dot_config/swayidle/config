@@ -1,0 +1,14 @@
+# Lock after 10 minutes of inactivity.
+timeout 600 'swaylock -f'
+
+# Power off displays after 15 minutes, then wake them on input.
+timeout 900 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors'
+
+# Suspend after 30 minutes of continuous inactivity.
+timeout 1800 'systemctl --no-block suspend'
+
+# Always cover the session before logind completes a suspend operation.
+before-sleep 'swaylock -f'
+
+# Honor explicit session-lock requests from logind.
+lock 'swaylock -f'

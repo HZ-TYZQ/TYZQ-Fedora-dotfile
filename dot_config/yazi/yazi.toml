@@ -1,0 +1,10 @@
+[opener]
+# 覆盖默认 edit opener（原为 ${EDITOR:-vi} %s，系统 EDITOR 被设为 nano）
+# 使 Enter 打开纯文本文件时使用 neovim
+edit = [
+	{ run = "nvim %s", desc = "nvim", for = "unix", block = true },
+]
+# 现有的其他配置...
+
+[mgr]
+show_hidden = true

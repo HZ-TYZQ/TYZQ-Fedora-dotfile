@@ -1,0 +1,44 @@
+#!/usr/bin/python3
+"""Raise the running Flatpak QQ through its tray item, without launching QQ."""
+
+import json
+from pathlib import Path
+import subprocess
+import sys
+
+
+def busctl(*args):
+    return subprocess.check_output(
+        ["busctl", "--user", "--timeout=3", "--json=short", *args], text=True
+    )
+
+
+def main():
+    items = json.loads(busctl(
+        "get-property", "org.kde.StatusNotifierWatcher", "/StatusNotifierWatcher",
+        "org.kde.StatusNotifierWatcher", "RegisteredStatusNotifierItems",
+    ))["data"]
+    for item in items:
+        service, separator, path = item.partition("/")
+        path = "/" + path if separator else "/StatusNotifierItem"
+        try:
+            pid = json.loads(busctl(
+                "call", "org.freedesktop.DBus", "/org/freedesktop/DBus",
+                "org.freedesktop.DBus", "GetConnectionUnixProcessID", "s", service,
+            ))["data"][0]
+            # Electron uses a generic tray ID; Flatpak's bus peer is a proxy.
+            # Its systemd cgroup identifies the application behind that proxy.
+            cgroup = Path(f"/proc/{pid}/cgroup").read_text()
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            # A tray item can disappear while enumerating the watcher.
+            continue
+        if "/app-flatpak-com.qq.QQ-" in cgroup:
+            busctl("call", service, path, "org.kde.StatusNotifierItem",
+                   "Activate", "ii", "0", "0")
+            return 0
+    print("QQ 托盘未找到，请先启动 QQ。", file=sys.stderr)
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

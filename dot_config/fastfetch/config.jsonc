@@ -1,0 +1,119 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "display": {
+    "separator": " ",
+    "disableLinewrap": true,
+    "color": {
+      "output": "#c7cbd4"
+    }
+  },
+  "logo": {
+    "type": "file-raw",
+    "source": "~/.config/fastfetch/logos/IMG_2890-atmosphere-40x18.ansi",
+    "padding": {
+      "right": 2
+    }
+  },
+  "percent": {
+    "type": 9,
+    "color": {
+      "green": "#a6d189",
+      "yellow": "#e5c890",
+      "red": "#e78284"
+    }
+  },
+  "modules": [
+    {
+      "type": "os",
+      "key": "OS",
+      "keyColor": "#9db7e5",
+      "format": "{name} {arch}"
+    },
+    {
+      "type": "kernel",
+      "key": "├ 󰅐 KER",
+      "keyColor": "#9db7e5",
+      "format": "{sysname} {release}"
+    },
+    {
+      "type": "packages",
+      "key": "├ 󰏖 PAK",
+      "keyColor": "#9db7e5",
+      "format": "{all}"
+    },
+    {
+      "type": "title",
+      "key": "└ \uf007 USR",
+      "keyColor": "#9db7e5",
+      "format": "{user-name}@{host-name}"
+    },
+    "break",
+    {
+      "type": "wm",
+      "key": "WM",
+      "keyColor": "#c9a0c9",
+      "format": "{pretty-name} ({protocol-name})"
+    },
+    {
+      "type": "shell",
+      "key": "├ \uf489 SHE",
+      "keyColor": "#c9a0c9",
+      "format": "{pretty-name} {version}"
+    },
+    {
+      "type": "terminal",
+      "key": "├ \uf120 TER",
+      "keyColor": "#c9a0c9",
+      "format": "{pretty-name} {version}"
+    },
+    {
+      "type": "terminalfont",
+      "key": "└ \uf031 FNT",
+      "keyColor": "#c9a0c9",
+      "format": "{name} ({size}pt)"
+    },
+    "break",
+    {
+      "type": "host",
+      "key": "PC",
+      "keyColor": "#b8bdc7",
+      "format": "{name} ({version})"
+    },
+    {
+      "type": "cpu",
+      "key": "├ \uf2db CPU",
+      "keyColor": "#b8bdc7"
+    },
+    {
+      "type": "memory",
+      "key": "├ 󰍛 MEM",
+      "keyColor": "#b8bdc7",
+      "format": "{used} / {total} ({percentage})"
+    },
+    {
+      "type": "gpu",
+      "key": "├ 󰢮 GPU",
+      "keyColor": "#b8bdc7",
+      "hideType": "integrated",
+      "format": "{name}"
+    },
+    {
+      "type": "display",
+      "key": "├ 󰍹 MON",
+      "keyColor": "#b8bdc7",
+      "format": "{name} {width}x{height}@{refresh-rate}"
+    },
+    {
+      "type": "disk",
+      "key": "└ 󰋊 DSK",
+      "keyColor": "#b8bdc7",
+      "folders": "/",
+      "format": "{size-used} / {size-total} ({size-percentage}) - {filesystem}"
+    },
+    "break",
+    {
+      "type": "colors",
+      "symbol": "circle"
+    }
+  ]
+}

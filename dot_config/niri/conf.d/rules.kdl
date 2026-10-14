@@ -1,0 +1,114 @@
+// Window rules let you adjust behavior for individual windows.
+// Find more information on the wiki:
+// https://niri-wm.github.io/niri/Configuration:-Window-Rules
+
+// Work around WezTerm's initial configure bug
+// by setting an empty default-column-width.
+window-rule {
+    // This regular expression is intentionally made as specific as possible,
+    // since this is the default config, and we want no false positives.
+    // You can get away with just app-id="wezterm" if you want.
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+// Give all windows a softer appearance while keeping text readable.
+// Keep shared geometry and popup behavior here; opacity is applied only to
+// inactive windows below so the focused window remains fully opaque.
+window-rule {
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+
+    // Context menus and other popups must stay solid: their surfaces include
+    // fully transparent shadow padding, and blur/xray filled that padding with
+    // a visible frosted halo while the translucent body hurt readability
+    // (Firefox and Chrome context menus were both affected).
+    popups {
+        opacity 1.0
+    }
+}
+
+// Let the wallpaper subtly show through windows that are not focused.
+window-rule {
+    match is-active=false
+    opacity 0.80
+
+    background-effect {
+        blur true
+        xray true
+    }
+}
+
+// Kitty renders only its background with alpha, keeping terminal text and
+// input-method popups crisp. Niri supplies the blur behind that background.
+window-rule {
+    match app-id=r#"^kitty$"#
+
+    background-effect {
+        blur true
+        xray true
+    }
+}
+
+// Keep Noctalia's settings window usable without taking over the tiled layout.
+window-rule {
+    match app-id="dev.noctalia.Noctalia"
+    open-floating true
+    default-column-width { fixed 1080; }
+    default-window-height { fixed 920; }
+}
+
+// Place Noctalia's static wallpaper in Niri's backdrop.
+layer-rule {
+    match namespace=r#"^noctalia-wallpaper"#
+    place-within-backdrop true
+}
+
+// Place phonto's video wallpaper in Niri's backdrop too, so the mp4 is
+// also visible behind workspaces during Overview / workspace switching.
+layer-rule {
+    match namespace=r#"^phonto"#
+    place-within-backdrop true
+}
+
+// Noctalia owns its own panel backgrounds, so Niri applies no blur to any
+// Noctalia layer — including the bar, whose frosted-glass look is drawn by
+// Noctalia itself.
+//
+// NOTE: noctalia-dock must never get blur. When the dock auto-hides, its layer
+// surface stays mapped and fully transparent, and blur turned it into a visible
+// ghost rectangle at the bottom edge. Re-tested on 2026-08-07: ghost rectangle
+// reproduced, same transparent-surface mechanism as the popup halo.
+//
+// This wildcard rule is the single source of truth; do not add a more specific
+// noctalia-* blur rule above it, because later rules override earlier ones and
+// the blur would silently be cancelled again.
+layer-rule {
+    match namespace=r#"^noctalia-.*$"#
+
+    background-effect {
+        blur false
+    }
+}

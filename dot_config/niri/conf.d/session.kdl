@@ -1,0 +1,32 @@
+// Session environment variables.
+// XMODIFIERS lets X11/XWayland apps (e.g. QQ running via XWayland) find Fcitx5 via
+// the XIM protocol. GTK_IM_MODULE/QT_IM_MODULE are deliberately NOT set: Wayland-native
+// GTK/Qt apps should use GTK/Qt's builtin text-input-v3 support (niri implements it),
+// which yields correctly positioned, themed fcitx5 candidate popups; forcing the
+// GTK_IM_MODULE=fcitx D-Bus module made the themed popup fail to appear in Firefox.
+environment {
+    XMODIFIERS "@im=fcitx"
+}
+
+// Add lines like this to spawn processes at startup.
+// Note that running niri as a session supports xdg-desktop-autostart,
+// which may be more convenient to use.
+// See the binds section below for more spawn examples.
+
+// Noctalia owns the bar; Waybar remains installed as a fallback.
+/-spawn-at-startup "waybar"
+
+// Start the existing Fcitx5 input method profile for this Niri session.
+spawn-at-startup "fcitx5" "-d"
+
+// Noctalia owns the shell, launcher, notifications, lock screen, and wallpaper.
+spawn-at-startup "noctalia"
+
+// Noctalia owns the graphical Polkit agent in this session.
+/-spawn-at-startup "/usr/libexec/kf6/polkit-kde-authentication-agent-1"
+
+// Legacy swayidle remains disabled; Noctalia idle behaviors are deliberately deferred.
+/-spawn-at-startup "swayidle" "-w"
+
+// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
+// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"

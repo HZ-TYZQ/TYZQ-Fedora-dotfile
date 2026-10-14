@@ -1,0 +1,25 @@
+[shell]
+polkit_agent = true
+telemetry_enabled = false
+setup_wizard_enabled = true
+
+[notification]
+enable_daemon = true
+
+[lockscreen]
+enabled = true
+fingerprint = false
+
+[wallpaper]
+enabled = true
+# 壁纸目录和图片由 GUI 的 settings.toml 管理；无状态配置时使用默认值。
+fill_mode = "crop"
+
+[backdrop]
+enabled = false
+
+[theme.templates]
+enable_builtin_templates = true
+enable_community_templates = true
+builtin_ids = ["niri"]
+community_ids = ["papirus-icons"]
