@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="176" viewBox="0 0 560 176">
+  <!-- Nine-slice: 24 / 48 / 98 / 18. The portrait is a separate overlay. -->
+  <rect x="2" y="85" width="528" height="90" rx="13" fill="#09070c" fill-opacity=".10"/>
+  <rect x="3" y="85" width="526" height="88" rx="12" fill="#09070c" fill-opacity=".18"/>
+  <rect x="3.5" y="84.5" width="525" height="87" rx="11" fill="#19161c" fill-opacity=".95" stroke="#e9d5a7" stroke-opacity=".25"/>
+  <rect x="4.5" y="85.5" width="523" height="85" rx="10" fill="none" stroke="#fff4d9" stroke-opacity=".035"/>
+  <path d="M16.5 98v58" fill="none" stroke="#dec38a" stroke-opacity=".36" stroke-width="2" stroke-linecap="round"/>
+</svg>

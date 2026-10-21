@@ -1,49 +1,38 @@
-# Fedora dotfiles
+# TYZQ 的 CachyOS 配置
 
-使用 [chezmoi](https://www.chezmoi.io/) 和 Git 管理的 Fedora 44 用户级配置，
-主要面向 Niri + Noctalia 桌面环境。
+`cachyos` 分支管理从 Fedora 迁移后、已在 CachyOS 上恢复并使用的配置。
+旧 Fedora 配置保留在 `master` 分支和 Git 历史中。
+唯一维护源目录：`~/.local/share/chezmoi`。
 
-## 快速开始
+## 已纳入管理
 
-```bash
-sudo dnf5 install chezmoi
-chezmoi init https://github.com/HZ-TYZQ/TYZQ-Fedora-dotfile.git
+- Niri：窗口、快捷键、输入、会话和本机显示器参数。
+- Noctalia：基础配置及 GUI 保存的面板、组件、主题、壁纸路径、闲置行为。
+- Fcitx5：输入法、快捷键、拼音偏好、`bed-money` / `OriDark` 主题。
+- Fish、Starship、Fastfetch：终端初始化、提示符、欢迎语和字符画。
+- Kitty、Alacritty：字体、配色与默认终端选择。
+- Neovim：LazyVim 配置、插件锁定文件、Markdown 配置及 Taplo 兼容设置。
+- 英文 XDG 用户目录设置、`qq-show` 启动脚本。
+
+没有安装脚本或自动提交、推送、应用钩子。软件、字体、壁纸和插件运行数据另外恢复。
+浏览器登录、密钥、keyring、gh 凭证、输入法用户词库、历史和缓存不纳入本仓库。
+Noctalia 生成的颜色文件不纳管；天气位置从本机已有设置读取，不写进 Git。
+
+## 日常保存
+
+在家目录或应用界面修改配置后：
+
+```sh
+chezmoi re-add
+python3 ~/.local/share/chezmoi/scripts/capture-noctalia.py
 chezmoi diff
-chezmoi apply
+chezmoi git status --short
+chezmoi git diff
 ```
 
-执行 `apply` 前务必检查 `chezmoi diff`。完整的安装、日常维护、同步、冲突处理、
-配置回退和安全边界说明见：[中文操作指南](docs/使用指南.md)。
+`re-add` 更新已管理的普通文件；新文件需要单独 `chezmoi add 路径`。
+Noctalia 的 GUI 设置用上面的脚本保存，它会移除天气位置数值并模板化家目录路径。
+Niri 的入口是模板，用 `chezmoi edit ~/.config/niri/config.kdl` 修改；其他 Niri 片段可正常 `re-add`。
 
-## 配置来源
-
-`~/.local/share/chezmoi` 是用户配置的唯一长期来源，家目录是程序实际读取的部署
-结果。不要再维护独立的 Niri、Noctalia 等配置副本；如直接修改家目录，应使用
-`chezmoi re-add` 将确认后的变化收回源目录。
-
-Niri 已拆为 `config.kdl.tmpl` 入口、`conf.d/` 配置片段和 `hosts/` 本机设置。
-屏幕参数按主机名选择；模板入口请直接修改源文件。具体分工见操作指南。
-
-## 当前管理范围
-
-- Niri、Noctalia、Waybar、Swayidle、Swaylock
-- Fish、Kitty、Starship
-- Neovim、Fastfetch、Yazi（核心配置与自建插件）
-- 用户环境变量、XDG Portal 和用户自启动项
-
-## 明确排除
-
-- 认证信息、凭据、私钥、历史、日志和会话
-- Yazi 中由外部写入方掌握的部分：Noctalia 生成主题
-  （`~/.config/yazi/flavors/noctalia.yazi`）与第三方 vendored 插件
-  （`plugins/smart-enter.yazi`、`plugins/fedora-clipboard.yazi`，旧版
-  `plugins/clipboard.yazi` 也继续排除）。前者每次换主题/壁纸
-  会被 Noctalia 模板重写；后者版本已由 `package.toml` 的 `rev`+`hash` 固定，
-  可用 `ya pkg install` 还原。两者均已写入 `.chezmoiignore`
-- Pi Agent（`~/.pi/agent`）的配置：2026-09-21 已用 `chezmoi forget` 退出纳管，
-  改为纯本地维护（其 `settings.json` 由程序自身写入，纳管只会持续产生冲突）
-- Pi Agent 的 `auth.json`、运行历史、模型缓存、npm 依赖和其他未列入白名单的文件
-- `/etc`、GRUB、DNF、Snapper 等系统级配置
-- Noctalia 生成的主题片段、Fish 状态和自动生成的补全
-- 迁移备份和旧 `.bak` 文件
-- VPN 配置、连接日志、实验目录和旧 `systemconfig` 归档
+确认 Git 差异后，按具体路径 `git add`，再提交和推送。不要直接添加整个家目录或 `.config`。
+更多部署、依赖与维护说明见 [使用指南](docs/使用指南.md)。

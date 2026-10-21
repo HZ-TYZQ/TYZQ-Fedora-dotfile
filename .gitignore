@@ -1,3 +1,10 @@
 # 适用于本机的changelog, 不放入整体配置变更
 
 /docs/本机系统变更记录
+
+# Local working files; review explicit paths before staging.
+__pycache__/
+*.pyc
+*.swp
+*.swo
+*~
