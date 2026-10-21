@@ -10,6 +10,10 @@ scripts/**
 .config/niri/noctalia.kdl
 .config/niri/cfg/
 .config/niri/cfg/**
+.config/qt6ct/colors/
+.config/qt6ct/colors/**
+.config/qt5ct/colors/
+.config/qt5ct/colors/**
 
 # Shell and editor runtime data.
 .config/fish/fish_variables

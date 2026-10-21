@@ -6,6 +6,8 @@
 // GTK_IM_MODULE=fcitx D-Bus module made the themed popup fail to appear in Firefox.
 environment {
     XMODIFIERS "@im=fcitx"
+    // Qt6ct supplies fonts/icons and reads Noctalia's generated Qt palette.
+    QT_QPA_PLATFORMTHEME "qt6ct"
 }
 
 // Add lines like this to spawn processes at startup.
