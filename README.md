@@ -12,6 +12,7 @@
 - Fish、Starship、Fastfetch：终端初始化、提示符、欢迎语和字符画。
 - Kitty、Alacritty：字体、配色与默认终端选择。
 - Qt6ct：Fusion 风格、Noto 字体、Papirus-Dark 图标及启动环境；配色由 Noctalia 生成。
+- 桌面应用图标：Noctalia、GTK 3/4 和 Qt6ct 统一使用 Papirus-Dark。
 - Neovim：LazyVim 配置、插件锁定文件、Markdown 配置及 Taplo 兼容设置。
 - 英文 XDG 用户目录设置、`qq-show` 启动脚本。
 

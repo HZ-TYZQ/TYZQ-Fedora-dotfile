@@ -14,6 +14,8 @@ scripts/**
 .config/qt6ct/colors/**
 .config/qt5ct/colors/
 .config/qt5ct/colors/**
+.config/gtk-3.0/gtk.css
+.config/gtk-4.0/gtk.css
 
 # Shell and editor runtime data.
 .config/fish/fish_variables
