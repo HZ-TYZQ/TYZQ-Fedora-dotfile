@@ -1,3 +1,6 @@
+# Select Vi mode before CachyOS adds mode-specific key bindings.
+set -g fish_key_bindings fish_vi_key_bindings
+
 source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 # Terminal appearance restored from TYZQ-Fedora-dotfile.
