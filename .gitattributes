@@ -1,0 +1,4 @@
+# Preserve Fcitx5's generated trailing blank lines for clean chezmoi diffs.
+dot_config/private_fcitx5/** whitespace=-blank-at-eof
+# Keep the original upstream notice's CRLF line endings and final blank line.
+private_dot_local/private_share/private_fcitx5/themes/bed-money/ORIGINAL-MATERIAL-NOTICE.txt -text whitespace=cr-at-eol,-blank-at-eof

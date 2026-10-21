@@ -1,7 +1,47 @@
-# Repository documentation is not deployed into the home directory.
+# Repository-only documentation and maintenance scripts.
+.gitattributes
 README.md
 docs/
 docs/**
+scripts/
+scripts/**
+
+# Generated theme output and unused stock Niri configuration.
+.config/niri/noctalia.kdl
+.config/niri/cfg/
+.config/niri/cfg/**
+
+# Shell and editor runtime data.
+.config/fish/fish_variables
+.config/fish/fish_history
+.config/nvim/.git/
+.config/nvim/.git/**
+.config/nvim/*.log
+.config/nvim/data/**
+.local/share/nvim/**
+.local/state/nvim/**
+
+# Input method learning data and caches are local.
+.config/fcitx5/conf/cached_layouts
+.local/share/fcitx5/pinyin/**
+.local/share/fcitx5/theme-backups/**
+
+# Only Noctalia's settings.toml is captured; other state stays local.
+.local/state/noctalia/*
+!.local/state/noctalia/settings.toml
+
+# Authentication and browser profiles stay outside this public repository.
+.ssh/**
+.gnupg/**
+.config/gh/**
+.config/chezmoi/**
+.config/mozilla/**
+.mozilla/**
+.config/google-chrome/**
+.config/chromium/**
+.var/app/com.google.Chrome/**
+.local/share/keyrings/**
+.cache/**
 
 # Yazi：外部生成或可重新下载的内容不纳管。
 # 1) Noctalia 社区模板 yazi 的输出路径就是这两个文件，每次换主题/壁纸都会重写，

@@ -3,7 +3,7 @@
 
 include "conf.d/session.kdl"
 include "conf.d/input.kdl"
-{{ if eq .chezmoi.hostname "tyzq-fedora" -}}
+{{ if or (eq .chezmoi.hostname "tyzq-fedora") (eq .chezmoi.hostname "tyzq-cachy") -}}
 include "hosts/tyzq-fedora.kdl"
 {{ end -}}
 include "conf.d/appearance.kdl"
