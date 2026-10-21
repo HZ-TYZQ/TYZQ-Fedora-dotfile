@@ -26,6 +26,10 @@ scripts/**
 .config/nvim/data/**
 .local/share/nvim/**
 .local/state/nvim/**
+.config/mpv/watch_later/
+.config/mpv/watch_later/**
+.config/mpv/watch_history.jsonl
+.local/state/mpv/**
 
 # Input method learning data and caches are local.
 .config/fcitx5/conf/cached_layouts
