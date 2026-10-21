@@ -22,6 +22,8 @@ environment {
 spawn-at-startup "fcitx5" "-d"
 
 // Noctalia owns the shell, launcher, notifications, lock screen, and wallpaper.
+// Noctalia and GTK apps read the desktop icon theme from GSettings.
+spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "icon-theme" "Papirus-Dark"
 spawn-at-startup "noctalia"
 
 // Noctalia owns the graphical Polkit agent in this session.
