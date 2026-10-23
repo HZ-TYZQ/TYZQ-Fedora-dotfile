@@ -2,6 +2,12 @@
 
 /docs/本机系统变更记录
 
+# Keep personal Git and npm configuration local.
+/dot_gitconfig
+/dot_config/git/config
+/dot_config/npm/npmrc
+/dot_config/npm/private_npmrc
+
 # Local working files; review explicit paths before staging.
 __pycache__/
 *.pyc
