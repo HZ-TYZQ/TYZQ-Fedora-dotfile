@@ -1,0 +1,8 @@
+" Preserve the defaults used before adding a user vimrc.
+source $VIMRUNTIME/defaults.vim
+
+" Keep history and marks in the XDG state directory.
+let s:state_dir = (empty($XDG_STATE_HOME) ? expand('~/.local/state') : $XDG_STATE_HOME) . '/vim'
+call mkdir(s:state_dir, 'p', 0700)
+let &viminfofile = s:state_dir . '/viminfo'
+unlet s:state_dir
