@@ -9,6 +9,7 @@
 
 - Niri：窗口、快捷键、输入、会话和显示器配置；具体显示器方案由本机 chezmoi 设置选择。
 - Noctalia：`~/.config/noctalia/config.toml` 中的基础配置。
+- Claude Code：用户偏好、状态栏脚本，以及 Fish、Zsh 和用户会话的配置目录入口。
 - Fcitx5：输入法、快捷键、拼音偏好及通知等配置。
 - Fish、Starship、Fastfetch：终端初始化、提示符、欢迎语和字符画。
 - Kitty、Alacritty：字体、配色与默认终端选择。
@@ -37,6 +38,11 @@
 整个 `private_dot_local/` 源目录都已退出 Git 跟踪，仅保留本机副本。
 这些文件需要单独备份；在新机器克隆仓库或执行 `chezmoi init` 无法恢复它们。
 配置中引用的 Fcitx5 主题、`qq-show` 脚本也需要另行恢复，或调整相应配置。
+
+Claude Code 的用户目录已迁到 `~/.config/claude`。其中只有 `settings.json` 和
+`statusline-command.sh` 纳入 chezmoi 和 Git；`.claude.json`、`.credentials.json`、
+会话历史、项目状态、插件和同步技能等数据只留在本机，不复制到 chezmoi 源目录。
+修改公开的 `settings.json` 时不要写入密钥、Token 或账号信息。
 
 软件、字体、壁纸和插件运行数据需要另行安装或恢复。
 浏览器登录、密钥、keyring、gh 凭证、输入法用户词库、历史和缓存不纳入本仓库。

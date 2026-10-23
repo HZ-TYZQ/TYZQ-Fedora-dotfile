@@ -8,6 +8,14 @@
 /dot_config/npm/npmrc
 /dot_config/npm/private_npmrc
 
+# Claude Code: keep account details, credentials, and runtime data local.
+/dot_claude*
+/private_dot_claude*
+/dot_config/claude/
+/dot_config/private_claude/*
+!/dot_config/private_claude/settings.json
+!/dot_config/private_claude/executable_statusline-command.sh
+
 # Local working files; review explicit paths before staging.
 __pycache__/
 *.pyc

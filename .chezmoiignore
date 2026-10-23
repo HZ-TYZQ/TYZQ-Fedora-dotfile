@@ -54,6 +54,14 @@ scripts/**
 .local/share/keyrings/**
 .cache/**
 
+# Claude Code: only reviewed preferences and the status line are managed.
+.claude/
+.claude/**
+.claude.json*
+.config/claude/*
+!.config/claude/settings.json
+!.config/claude/statusline-command.sh
+
 # Yazi：外部生成或可重新下载的内容不纳管。
 # 1) Noctalia 社区模板 yazi 的输出路径就是这两个文件，每次换主题/壁纸都会重写，
 #    纳管会让源目录与家目录反复分歧（2026-09-21 forget 的根因）。

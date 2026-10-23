@@ -1,0 +1,15 @@
+{
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
+  "theme": "dark-ansi",
+  "statusLine": {
+    "type": "command",
+    "command": "sh \"${CLAUDE_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/claude}/statusline-command.sh\""
+  },
+  "env": {
+    "DISABLE_AUTOUPDATER": "1"
+  }
+}

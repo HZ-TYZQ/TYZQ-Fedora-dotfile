@@ -3,3 +3,6 @@ ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${HOST%%.*}-${ZSH_VE
 mkdir -p -- "${ZSH_COMPDUMP:h}"
 
 source /usr/share/cachyos-zsh-config/cachyos-config.zsh
+
+# Keep Claude Code's configuration and data under the XDG config directory.
+export CLAUDE_CONFIG_DIR="${CLAUDE_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/claude}"
