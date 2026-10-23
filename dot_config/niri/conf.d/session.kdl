@@ -34,3 +34,6 @@ spawn-at-startup "noctalia"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+
+// LocalSearch needs the desktop session class in the D-Bus/systemd environment.
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "XDG_SESSION_CLASS=user"

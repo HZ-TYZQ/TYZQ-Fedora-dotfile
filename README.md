@@ -1,7 +1,8 @@
 # TYZQ 的 dotfiles 配置
 
-`cachyos` 分支管理从 Fedora 迁移后、已在 CachyOS 上恢复并使用的配置。
-旧 Fedora 配置保留在 `master` 分支和 Git 历史中。
+默认分支 `cachyos` 管理从 Fedora 迁移后、已在 CachyOS 上恢复并使用的配置。
+`fedora` 由原 `master` 重命名而来，保留现有历史，包括已合并的 CachyOS 配置。
+旧 Fedora 配置可在迁移前的 Git 历史中查看。
 唯一维护源目录：`~/.local/share/chezmoi`。
 
 ## 已纳入管理
@@ -21,6 +22,8 @@
 没有安装脚本或自动提交、推送、应用钩子。软件、字体、壁纸和插件运行数据另外恢复。
 浏览器登录、密钥、keyring、gh 凭证、输入法用户词库、历史和缓存不纳入本仓库。
 Git 全局配置和 npm 的个人配置只在本机保留，其 chezmoi 源副本由 `.gitignore` 排除。
+`private_dot_local/` 也只在本机保留，其中的 Noctalia GUI 设置、Fcitx5 主题和
+`qq-show` 脚本需要在新机器另行恢复。
 Noctalia 生成的颜色文件不纳管；天气位置从本机已有设置读取，不写进 Git。
 
 ## 日常保存
