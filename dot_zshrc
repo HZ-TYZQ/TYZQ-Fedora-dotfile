@@ -1,0 +1,5 @@
+# Keep completion caches in the XDG cache directory.
+ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${HOST%%.*}-${ZSH_VERSION}"
+mkdir -p -- "${ZSH_COMPDUMP:h}"
+
+source /usr/share/cachyos-zsh-config/cachyos-config.zsh

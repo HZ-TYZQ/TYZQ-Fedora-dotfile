@@ -26,6 +26,7 @@ scripts/**
 .config/nvim/data/**
 .local/share/nvim/**
 .local/state/nvim/**
+.local/state/vim/**
 .config/mpv/watch_later/
 .config/mpv/watch_later/**
 .config/mpv/watch_history.jsonl
